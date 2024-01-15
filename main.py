@@ -1,25 +1,10 @@
-import threading
-import time
-
-import scapy.sendrecv
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication
 import sys
 from View import View, MapView
 from Model import Model
 from Controller import Controller
-from winpcapy import WinPcapUtils,WinPcapDevices,WinPcap
-import dpkt.ethernet
-import dpkt.utils
-from threading import Thread
-from time import sleep
 from Model.DataBaseModel import ScanNetLocalDataBase
-from scapy.all import *
-import psutil
 
-import matplotlib.pyplot as plt
-def netio():
-      while True:
-         print(psutil.net_io_counters())
 if __name__ == '__main__':
 
       app = QApplication(sys.argv)
@@ -27,14 +12,14 @@ if __name__ == '__main__':
       db = ScanNetLocalDataBase()
       db.clearDB()
       db.createDataBase("scannet.db")
-      ports,count = db.getPortsCount()
-      plt.xticks(rotation=90)
-      bar_colors = ['tab:blue' ,'tab:red', 'tab:blue', 'tab:red', 'tab:orange']
-      plt.bar(ports, count, color=bar_colors, alpha=0.7)
-      plt.tight_layout()
-      plt.savefig("most_ports.png")
-      plt.clf()
-      plt.close()
+     # ports,count = db.getPortsCount()
+     # plt.xticks(rotation=90)
+     # bar_colors = ['tab:blue' ,'tab:red', 'tab:blue', 'tab:red', 'tab:orange']
+     # plt.bar(ports, count, color=bar_colors, alpha=0.7)
+     # plt.tight_layout()
+     # plt.savefig("most_ports.png")
+     # plt.clf()
+     # plt.close()
       #db.insertPacket("1", "src_mac", "dest_mac", "0")
 
 

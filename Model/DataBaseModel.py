@@ -138,9 +138,15 @@ class ScanNetLocalDataBase:
            return protos,count
 
     def clearDB(self):
-        with sq.connect(self.dbname) as con:
-            cur = con.cursor()
-            cur.execute("""DELETE FROM packets""")
+        try:
+           with sq.connect(self.dbname) as con:
+               cur = con.cursor()
+               cur.execute("""DELETE FROM packets""")
+               cur.execute("""DELETE FROM payloads""")
+               cur.execute("""DELETE FROM protocols""")
+               cur.execute("""DELETE FROM timestamps""")
+        except:
+            print("error!")
 
     def removeDataBase(self, dbname = ""):
         if dbname != "":
